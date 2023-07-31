@@ -3,19 +3,14 @@ import { styles } from "./styles"
 
 import trashIconImage from '../../assets/trash.png'
 import checkIconItemImage from '../../assets/checkItemIcon.png'
-import { useState } from "react"
+import { TaskProps } from '../../screens/Home'
 
 interface TaskItemProps {
-  taskText: string
+  task: TaskProps
+  onCompletedTask: () => void
 }
 
-export function TaskItem({ taskText }: TaskItemProps) {
-  const [taskCompleted, setTaskCompleted] = useState(false)
-
-  function Toggle() {
-    setTaskCompleted(!taskCompleted)
-    console.log('Clicou no botão de toggle da task')
-  }
+export function TaskItem({ task, onCompletedTask }: TaskItemProps) {
 
   function removeTask() {
     console.log('Clicou no botão de remover')
@@ -25,18 +20,25 @@ export function TaskItem({ taskText }: TaskItemProps) {
     <View style={styles.container}>
       <View style={styles.content}>
 
-        <TouchableOpacity onPress={Toggle}>
-          {taskCompleted ? (
+        <TouchableOpacity onPress={onCompletedTask}>
+
+          {/* Verificando a condição do dado de completed das tasks */}
+          {task.completed ? (
             <View style={[styles.circle, styles.checkedItem]}>
-              <Image source={checkIconItemImage} style={styles.checkIcon} />
+              <Image
+                source={checkIconItemImage}
+                style={styles.checkIcon}
+              />
             </View>
           ) : (
             <View style={[styles.circle, styles.emptyCircle]} />
           )}
         </TouchableOpacity>
 
-        <Text style={[styles.taskText, taskCompleted && styles.completedTextTask]}>
-          {taskText}
+        <Text style={[styles.taskText,
+        task.completed && styles.completedTextTask] // Caso esteja com o completed marcado = adicionar a estilização
+        }>
+          {task.task}
         </Text>
 
         <TouchableOpacity onPress={removeTask}>

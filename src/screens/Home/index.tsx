@@ -3,7 +3,7 @@ import { styles } from "./styles";
 
 import Logo from '../../assets/Logo.png'
 import { Tasks } from "../../components/Tasks";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export interface TaskProps {
   task: string
@@ -23,8 +23,8 @@ export function Home() {
 
 
     // Transformando tudo em minúsculo para poder fazer a comparação
-    if (taskItems.find(item => item.task.toLowerCase() === newTask.toLowerCase())){
-      return Alert.alert("Item existente!","Este item já existe em seu histórico de tarefas.")
+    if (taskItems.find(item => item.task.toLowerCase() === newTask.toLowerCase())) {
+      return Alert.alert("Item existente!", "Este item já existe em seu histórico de tarefas.")
     }
 
     // Criando uma constante contendo os dados do que o usuário está adicionando
@@ -34,11 +34,15 @@ export function Home() {
     }
 
     // Adicionando a dados na lista de tarefas
-    setTaskItems(prevState => [newTaskData,...prevState])
+    setTaskItems(prevState => [newTaskData, ...prevState])
 
     // Limpando o campo
     setNewTask('')
   }
+
+  useEffect(() => {
+    setCompletedTasks(taskItems.filter(task => task.completed).length)
+  }, [taskItems])
 
   return (
     <View style={styles.container}>
@@ -86,10 +90,10 @@ export function Home() {
       </View>
 
 
-      <Tasks 
-      // Passando os states (lista de tasks) para o componente
-      taskItems={taskItems}
-      setTaskItems={setTaskItems}
+      <Tasks
+        // Passando os states (lista de tasks) para o componente
+        taskItems={taskItems}
+        setTaskItems={setTaskItems}
       />
 
 
