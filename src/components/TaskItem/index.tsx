@@ -8,13 +8,10 @@ import { TaskProps } from '../../screens/Home'
 interface TaskItemProps {
   task: TaskProps
   onCompletedTask: () => void
+  onRemoveTask: () => void
 }
 
-export function TaskItem({ task, onCompletedTask }: TaskItemProps) {
-
-  function removeTask() {
-    console.log('Clicou no botão de remover')
-  }
+export function TaskItem({ task, onCompletedTask, onRemoveTask }: TaskItemProps) {
 
   return (
     <View style={styles.container}>
@@ -41,7 +38,7 @@ export function TaskItem({ task, onCompletedTask }: TaskItemProps) {
           {task.task}
         </Text>
 
-        <TouchableOpacity onPress={removeTask}>
+        <TouchableOpacity onPress={onRemoveTask}>
           <Image
             source={trashIconImage}
             style={styles.trash}

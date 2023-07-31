@@ -15,7 +15,6 @@ interface TaskListProps {
 export function Tasks({ setTaskItems, taskItems }: TaskListProps) {
 
   function handleCheckCompletedTask(item: TaskProps) {
-
     if (item.completed === false) {
       return Alert.alert('Marcar como concluída', `Deseja marcar que completou a tarefa ${item.task}?`, [
         {
@@ -65,6 +64,21 @@ export function Tasks({ setTaskItems, taskItems }: TaskListProps) {
 
   }
 
+  function handleRemoveTaskFromList(item: TaskProps) {
+    Alert.alert("Remover", `Você deseja realmente remover a tarefa ${item.task}?`, [
+      {
+        text: 'Sim',
+        onPress: () => {
+          setTaskItems(taskItems.filter(taskItem => taskItem.task !== item.task))
+        }
+      },
+      {
+        text: 'Não',
+        style: 'cancel'
+      }
+    ])
+  }
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -76,6 +90,7 @@ export function Tasks({ setTaskItems, taskItems }: TaskListProps) {
             task={item}
             key={item.task}
             onCompletedTask={() => handleCheckCompletedTask(item)}
+            onRemoveTask={() => handleRemoveTaskFromList(item)}
           />
         )}
 
