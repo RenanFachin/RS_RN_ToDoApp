@@ -5,6 +5,11 @@ import Logo from '../../assets/Logo.png'
 import { Tasks } from "../../components/Tasks";
 
 export function Home() {
+
+  function handleAddNewTask(){
+    console.log('Você clicou no botão de adicionar uma nova tarefa')
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -22,7 +27,7 @@ export function Home() {
             placeholderTextColor='#808080'
           />
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleAddNewTask}>
             <Text style={styles.buttonText}>
               +
             </Text>

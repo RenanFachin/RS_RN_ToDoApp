@@ -10,24 +10,40 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
     marginBottom: 8,
-    paddingHorizontal: 8,
-    paddingVertical: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 8,
     backgroundColor: '#262626',
+  },
+  emptyCircle: {
+    borderColor: '#4EA8DE',
   },
   circle: {
     width: 24,
     height: 24,
-    borderColor: '#4EA8DE',
     borderRadius: 12,
     borderWidth: 2
+  },
+  checkedItem: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  checkIcon: {
+    width: 32,
+    height: 32,
   },
   taskText: {
     flex: 1,
     color: '#F2F2F2',
-    fontSize: 14,
+    fontSize: 16,
+  },
+  completedTextTask:{
+    color: '#808080',
+    textDecorationLine:  'line-through', 
+    textDecorationStyle: 'solid'
   },
   trash: {
-    width: 32,
-    height: 32,
+    width: 42,
+    height: 42,
   }
 })

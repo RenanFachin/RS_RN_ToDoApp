@@ -53,7 +53,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
-    borderBottomColor: '#333333'
+    borderBottomColor: '#333333',
+    borderRadius: 8
   },
   summaryItem: {
     flexDirection: 'row',

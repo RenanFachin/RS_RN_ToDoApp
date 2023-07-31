@@ -6,19 +6,14 @@ import { useState } from "react";
 import { TaskItem } from "../TaskItem";
 
 export function Tasks() {
-  const [items, setItems] = useState(['teste', 'teste2'])
+  const [items, setItems] = useState(['teste', 'teste2', 'teste3', 'teste4', 'teste', 'teste2', 'teste3', 'teste4', 'teste', 'teste2', 'teste3', 'teste4'])
   // const [items, setItems] = useState([])
 
   return (
-    <View style={styles.container}> 
+    <View style={styles.container}>
       <FlatList
         data={items}
         renderItem={({ item }) => (
-          // <View>
-          //   <Text>
-          //     {item}
-          //   </Text>
-          // </View>
           <TaskItem />
         )}
 
