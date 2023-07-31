@@ -5,8 +5,11 @@ import trashIconImage from '../../assets/trash.png'
 import checkIconItemImage from '../../assets/checkItemIcon.png'
 import { useState } from "react"
 
+interface TaskItemProps {
+  taskText: string
+}
 
-export function TaskItem() {
+export function TaskItem({ taskText }: TaskItemProps) {
   const [taskCompleted, setTaskCompleted] = useState(false)
 
   function Toggle() {
@@ -14,7 +17,7 @@ export function TaskItem() {
     console.log('Clicou no botão de toggle da task')
   }
 
-  function removeTask(){
+  function removeTask() {
     console.log('Clicou no botão de remover')
   }
 
@@ -33,7 +36,7 @@ export function TaskItem() {
         </TouchableOpacity>
 
         <Text style={[styles.taskText, taskCompleted && styles.completedTextTask]}>
-          Integer urna interdum massa libero auctor neque turpis turpis semper.
+          {taskText}
         </Text>
 
         <TouchableOpacity onPress={removeTask}>
