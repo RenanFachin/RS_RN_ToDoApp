@@ -13,18 +13,33 @@ export function Home() {
         />
       </View>
 
-      <View style={styles.form}>
-        <TextInput
-          style={styles.input}
-          placeholder='Nome do participante'
-          placeholderTextColor='#808080'
-        />
+      <View style={styles.content}>
+        <View style={styles.form}>
+          <TextInput
+            style={styles.input}
+            placeholder='Adicione uma nova tarefa'
+            placeholderTextColor='#808080'
+          />
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>
-            +
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>
+              +
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.userSummary}>
+          <View style={styles.summaryItem}>
+            <Text style={styles.createdText}>Criadas</Text>
+            <Text style={styles.amountText}>0</Text>
+          </View>
+
+
+          <View style={styles.summaryItem}>
+            <Text style={styles.concludedText}>Concluídas</Text>
+            <Text style={styles.amountText}>0</Text>
+          </View>
+        </View>
       </View>
 
 
