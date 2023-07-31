@@ -1,4 +1,4 @@
-import { FlatList, Image, Text, View } from "react-native";
+import { Alert, FlatList, Image, Text, View } from "react-native";
 import { styles } from "./style";
 
 import ClipBoardImg from '../../assets/Clipboard.png'
@@ -15,15 +15,54 @@ interface TaskListProps {
 export function Tasks({ setTaskItems, taskItems }: TaskListProps) {
 
   function handleCheckCompletedTask(item: TaskProps) {
-    const updateItems = [...taskItems]
 
-    const index = taskItems.findIndex((taskItems: TaskProps) =>
-      taskItems.task === item.task
-    )
+    if (item.completed === false) {
+      return Alert.alert('Marcar como concluída', `Deseja marcar que completou a tarefa ${item.task}?`, [
+        {
+          text: 'Sim',
 
-    updateItems[index] = {...item, completed: !item.completed}
+          onPress: () => {
+            const updateItems = [...taskItems]
 
-    setTaskItems(updateItems)
+            const index = taskItems.findIndex((taskItems: TaskProps) =>
+              taskItems.task === item.task
+            )
+
+            updateItems[index] = { ...item, completed: !item.completed }
+
+            setTaskItems(updateItems)
+          }
+        },
+        {
+          text: 'Não',
+          style: 'cancel'
+        }
+      ])
+    }
+    else {
+      return Alert.alert('Desmarcar tarefa', `Deseja desmarcar que completou a tarefa ${item.task}?`, [
+        {
+          text: 'Sim',
+
+          onPress: () => {
+            const updateItems = [...taskItems]
+
+            const index = taskItems.findIndex((taskItems: TaskProps) =>
+              taskItems.task === item.task
+            )
+
+            updateItems[index] = { ...item, completed: !item.completed }
+
+            setTaskItems(updateItems)
+          }
+        },
+        {
+          text: 'Não',
+          style: 'cancel'
+        }
+      ])
+    }
+
   }
 
   return (
