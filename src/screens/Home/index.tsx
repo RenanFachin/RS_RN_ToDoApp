@@ -5,7 +5,7 @@ import Logo from '../../assets/Logo.png'
 import { Tasks } from "../../components/Tasks";
 import { useState } from "react";
 
-interface TaskProps {
+export interface TaskProps {
   task: string
   completed: boolean
 }
@@ -17,6 +17,10 @@ export function Home() {
 
   function handleAddNewTask() {
     // console.log(newTask)
+    if (newTask === '') {
+      return Alert.alert("Erro", "Você precisa preencher algo no campo para poder adicionar uma nova tarefa")
+    }
+
 
     // Transformando tudo em minúsculo para poder fazer a comparação
     if (taskItems.find(item => item.task.toLowerCase() === newTask.toLowerCase())){
@@ -82,7 +86,11 @@ export function Home() {
       </View>
 
 
-      <Tasks />
+      <Tasks 
+      // Passando os states (lista de tasks) para o componente
+      taskItems={taskItems}
+      setTaskItems={setTaskItems}
+      />
 
 
     </View>
