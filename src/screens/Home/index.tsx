@@ -2,6 +2,7 @@ import { Image, Text, TextInput, View, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 
 import Logo from '../../assets/Logo.png'
+import { Tasks } from "../../components/Tasks";
 
 export function Home() {
   return (
@@ -39,8 +40,12 @@ export function Home() {
             <Text style={styles.concludedText}>Concluídas</Text>
             <Text style={styles.amountText}>0</Text>
           </View>
+
         </View>
       </View>
+
+
+      <Tasks />
 
 
     </View>

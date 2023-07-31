@@ -51,12 +51,15 @@ export const styles = StyleSheet.create({
   userSummary: {
     marginTop: 32,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: '#333333'
   },
   summaryItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8
+    gap: 8,
+    marginBottom: 20,
   },
   createdText: {
     color: '#8284FA',
