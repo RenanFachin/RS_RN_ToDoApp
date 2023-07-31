@@ -63,7 +63,10 @@ export function Home() {
             onChangeText={setNewTask}
           />
 
-          <TouchableOpacity style={styles.button} onPress={handleAddNewTask}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={handleAddNewTask}
+          >
             <Text style={styles.buttonText}>
               +
             </Text>

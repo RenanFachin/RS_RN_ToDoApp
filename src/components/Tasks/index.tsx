@@ -2,7 +2,6 @@ import { Alert, FlatList, Image, Text, View } from "react-native";
 import { styles } from "./style";
 
 import ClipBoardImg from '../../assets/Clipboard.png'
-import { useState } from "react";
 import { TaskItem } from "../TaskItem";
 
 import { TaskProps } from '../../screens/Home'

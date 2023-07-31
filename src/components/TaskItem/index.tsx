@@ -20,16 +20,20 @@ export function TaskItem({ task, onCompletedTask, onRemoveTask }: TaskItemProps)
         <TouchableOpacity onPress={onCompletedTask}>
 
           {/* Verificando a condição do dado de completed das tasks */}
-          {task.completed ? (
-            <View style={[styles.circle, styles.checkedItem]}>
-              <Image
-                source={checkIconItemImage}
-                style={styles.checkIcon}
+          {
+            task.completed ? (
+              <View style={[styles.circle, styles.checkedItem]}>
+                <Image
+                  source={checkIconItemImage}
+                  style={styles.checkIcon}
+                />
+              </View>
+            ) : (
+              <View
+                style={[styles.circle, styles.emptyCircle]}
               />
-            </View>
-          ) : (
-            <View style={[styles.circle, styles.emptyCircle]} />
-          )}
+            )
+          }
         </TouchableOpacity>
 
         <Text style={[styles.taskText,
